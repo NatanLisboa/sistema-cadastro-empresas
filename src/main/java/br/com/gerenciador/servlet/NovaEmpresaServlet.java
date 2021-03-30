@@ -1,4 +1,4 @@
-package gerenciador;
+package br.com.gerenciador.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -22,12 +22,22 @@ public class NovaEmpresaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Cadastrando nova empresa!");
 		String nomeEmpresa = request.getParameter("nome");
+		
+		Empresa empresa = new Empresa();
+		empresa.setNome(nomeEmpresa);
+		
+		Banco banco = new Banco();
+		banco.adicionarEmpresa(empresa);
+		
 		PrintWriter out = response.getWriter();
 		if (nomeEmpresa == null) {
 			out.println("<html><body>Empresa cadastrada com sucesso!</body></html>");
+			System.out.println("Empresa cadastrada com sucesso!");
 		} else {
 			out.println("<html><body>Empresa " + nomeEmpresa + " cadastrada com sucesso!</body></html>");
+			System.out.println("Empresa " + nomeEmpresa + " cadastrada com sucesso!");
 		}
+		
 	}
 
 }

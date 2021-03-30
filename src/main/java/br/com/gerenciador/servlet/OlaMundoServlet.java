@@ -1,4 +1,4 @@
-package gerenciador;
+package br.com.gerenciador.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
