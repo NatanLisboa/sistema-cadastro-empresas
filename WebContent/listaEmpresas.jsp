@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@page import="java.util.List"%>
-<%@page import="br.com.gerenciador.servlet.Empresa"%>
+    pageEncoding="ISO-8859-1" %>
+<%@ page import="java.util.List" %>
+<%@ page import="br.com.gerenciador.servlet.Empresa" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
@@ -10,21 +11,14 @@
 <title>Empresas cadastradas</title>
 </head>
 <body>
-	Lista de empresas: <br />
-	<%
-		@SuppressWarnings("unchecked")
-		List<Empresa> listaEmpresas = (List<Empresa>) request.getAttribute("listaEmpresas");
 	
-		System.out.println("Exibindo lista de empresas");
-	%>
+	Lista de empresas: <br />
+	
 	<ul>
-		<% 
-		for (Empresa e : listaEmpresas) {
-		%>
-		<li> <%= e.getNome() %> </li>
-		<%
-		}
-		%>
+		<c:forEach items="${listaEmpresas}" var="empresa">
+			<li> ${empresa.nome} </li>
+		</c:forEach>
 	</ul>
+
 </body>
 </html>
