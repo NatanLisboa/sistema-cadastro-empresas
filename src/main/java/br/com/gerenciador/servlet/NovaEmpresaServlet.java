@@ -1,8 +1,8 @@
 package br.com.gerenciador.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,14 +29,10 @@ public class NovaEmpresaServlet extends HttpServlet {
 		Banco banco = new Banco();
 		banco.adicionarEmpresa(empresa);
 		
-		PrintWriter out = response.getWriter();
-		if (nomeEmpresa == null) {
-			out.println("<html><body>Empresa cadastrada com sucesso!</body></html>");
-			System.out.println("Empresa cadastrada com sucesso!");
-		} else {
-			out.println("<html><body>Empresa " + nomeEmpresa + " cadastrada com sucesso!</body></html>");
-			System.out.println("Empresa " + nomeEmpresa + " cadastrada com sucesso!");
-		}
+		//chamar o JSP
+		RequestDispatcher rd = request.getRequestDispatcher("/novaEmpresaCriada.jsp"); // Diz ao programa para onde ele deve ir
+		request.setAttribute("empresa", empresa.getNome());
+		rd.forward(request, response); //Manda o programa ir a URL especificada, passando a requisição e a resposta como parâmetros
 		
 	}
 
