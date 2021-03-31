@@ -1,6 +1,10 @@
 package br.com.gerenciador.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,10 +25,25 @@ public class NovaEmpresaServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Cadastrando nova empresa!");
+		
 		String nomeEmpresa = request.getParameter("nome");
+		String dataAberturaEmpresaString = request.getParameter("dataAbertura");
+		Date dataAberturaEmpresa = null;
+		
+		try {
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			dataAberturaEmpresa = sdf.parse(dataAberturaEmpresaString);
+		} catch (ParseException e) {
+			throw new ServletException(e);
+		} catch (Exception e) {
+			PrintWriter out = response.getWriter();
+			out.println("Um erro desconhecido ocorreu no servidor. Tente novamente mais tarde.");
+			e.printStackTrace();
+		}
 		
 		Empresa empresa = new Empresa();
 		empresa.setNome(nomeEmpresa);
+		empresa.setDataAbertura(dataAberturaEmpresa);
 		
 		Banco banco = new Banco();
 		banco.adicionarEmpresa(empresa);

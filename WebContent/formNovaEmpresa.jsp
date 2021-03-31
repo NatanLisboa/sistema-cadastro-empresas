@@ -14,6 +14,7 @@
 	<form action="${linkPaginaNovaEmpresaCadastrada}" method="post">
 	
 		Nome: <input type="text" name="nome"/>
+		Data de abertura: <input type="text" name="dataAbertura"/>
 		
 		<input type="submit" />
 		
