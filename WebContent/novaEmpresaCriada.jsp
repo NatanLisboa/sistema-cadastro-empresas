@@ -1,3 +1,6 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url value="/listaEmpresas" var="linkPaginaListaEmpresas"/>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,6 +8,14 @@
 <title>Empresa criada com sucesso!</title>
 </head>
 <body>
-	Empresa ${empresa} cadastrada com sucesso!
+	
+	<c:if test="${not empty empresa }">
+		Empresa ${empresa} cadastrada com sucesso!
+	</c:if>
+	
+	<c:if test="${empty empresa }">
+		Nenhuma empresa foi cadastrada no momento!
+	</c:if>
+	
 </body>
 </html>
