@@ -6,7 +6,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,11 +47,10 @@ public class NovaEmpresaServlet extends HttpServlet {
 		Banco banco = new Banco();
 		banco.adicionarEmpresa(empresa);
 		
-		//chamar o JSP
-		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas"); // Diz ao programa para onde ele deve ir
 		request.setAttribute("empresa", empresa.getNome());
-		rd.forward(request, response); //Manda o programa ir a URL especificada, passando a requisição e a resposta como parâmetros
 		
+		response.sendRedirect("listaEmpresas");
+			
 	}
 
 }
