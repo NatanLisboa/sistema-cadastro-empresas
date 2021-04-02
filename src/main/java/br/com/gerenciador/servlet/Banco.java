@@ -30,6 +30,18 @@ public class Banco {
 		
 	}
 	
+	public Empresa buscarEmpresaPeloId(int id) {
+		
+		 for (Empresa empresa : lista) {
+			if (empresa.getId() == id) {
+				return empresa;
+			}
+		}
+		
+		return null;
+		
+	}
+	
 	public List<Empresa> getEmpresas(){
 		return Banco.lista;	
 	}

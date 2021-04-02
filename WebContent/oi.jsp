@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Página inicial</title>
 </head>
 <body>
 	<h1>Bem-vindo ao sistema de gestão de empresas!</h1>
