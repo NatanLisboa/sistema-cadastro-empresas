@@ -13,7 +13,8 @@
 <body>	
 	
 	<form action="${linkPaginaNovaEmpresaCadastrada}" method="post">
-	
+		
+		<input type="hidden" name="id" value="${empresa.id }"/>
 		Nome: <input type="text" name="nome" value="${empresa.nome }"/>
 		Data de abertura: <input type="text" name="dataAbertura" value="<fmt:formatDate value="${empresa.dataAbertura }" pattern="dd/MM/yyyy"/>"/>
 		
