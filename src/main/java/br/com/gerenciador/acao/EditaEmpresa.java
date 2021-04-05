@@ -1,4 +1,4 @@
-package br.com.gerenciador.servlet;
+package br.com.gerenciador.acao;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,19 +7,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class AlteraEmpresaServlet
- */
-@WebServlet("/alteraEmpresa")
-public class AlteraEmpresaServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+import br.com.gerenciador.modelo.Banco;
+import br.com.gerenciador.modelo.Empresa;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class EditaEmpresa {
+	
+	public void executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		String idEmpresaString = request.getParameter("id");
 		int idEmpresa = 0; 
@@ -48,8 +44,10 @@ public class AlteraEmpresaServlet extends HttpServlet {
 		empresa.setNome(nomeEmpresa);
 		empresa.setDataAbertura(dataAberturaEmpresa);
 		
-		response.sendRedirect("listaEmpresas");
+		response.sendRedirect("entrada?acao=ListarEmpresas");
 		
 	}
 
-}
+	}
+	
+

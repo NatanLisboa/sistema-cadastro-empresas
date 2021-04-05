@@ -2,7 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<c:url value="/alteraEmpresa" var="linkPaginaNovaEmpresaCadastrada"/>
+<c:url value="/entrada" var="linkEntradaServlet"/>
 
 <!DOCTYPE html>
 <html>
@@ -12,8 +12,9 @@
 </head>
 <body>	
 	
-	<form action="${linkPaginaNovaEmpresaCadastrada}" method="post">
+	<form action="${linkEntradaServlet}" method="post">
 		
+		<input type="hidden" name="acao" value="EditarEmpresa"/>
 		<input type="hidden" name="id" value="${empresa.id }"/>
 		Nome: <input type="text" name="nome" value="${empresa.nome }"/>
 		Data de abertura: <input type="text" name="dataAbertura" value="<fmt:formatDate value="${empresa.dataAbertura }" pattern="dd/MM/yyyy"/>"/>
