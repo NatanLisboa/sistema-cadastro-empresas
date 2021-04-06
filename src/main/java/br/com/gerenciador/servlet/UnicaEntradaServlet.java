@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.gerenciador.acao.CadastraEmpresa;
+import br.com.gerenciador.acao.CadastraEmpresaForm;
 import br.com.gerenciador.acao.EditaEmpresa;
 import br.com.gerenciador.acao.ListaEmpresas;
 import br.com.gerenciador.acao.MostraEmpresa;
@@ -43,6 +44,11 @@ public class UnicaEntradaServlet extends HttpServlet {
 			CadastraEmpresa acao = new CadastraEmpresa();
 			arquivoJsp = acao.executa(request, response);
 			
+		}  else if (paramAcao.equals("CadastrarEmpresaForm")) {
+		
+			CadastraEmpresaForm acao = new CadastraEmpresaForm();
+			arquivoJsp = acao.executa(request, response);
+			
 		} else if (paramAcao.equals("EditarEmpresa")) {
 			
 			EditaEmpresa acao = new EditaEmpresa();
@@ -57,7 +63,7 @@ public class UnicaEntradaServlet extends HttpServlet {
 		
 		String[] tipoEEndereco = arquivoJsp.split(":");
 		if(tipoEEndereco[0].equals("forward")) {
-			RequestDispatcher rd = request.getRequestDispatcher(tipoEEndereco[1]);
+			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + tipoEEndereco[1]);
 			rd.forward(request, response);
 		} else {
 			response.sendRedirect(tipoEEndereco[1]);
