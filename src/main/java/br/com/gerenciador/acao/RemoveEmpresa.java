@@ -9,7 +9,7 @@ import br.com.gerenciador.modelo.Banco;
 
 public class RemoveEmpresa {
 	
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		String paramId = request.getParameter("id");
 		int id = Integer.parseInt(paramId);
@@ -19,7 +19,7 @@ public class RemoveEmpresa {
 		Banco banco = new Banco();
 		banco.removerEmpresa(id);
 		
-		response.sendRedirect("entrada?acao=ListarEmpresas");
+		return "redirect:entrada?acao=ListarEmpresas";
 		
 	}
 }

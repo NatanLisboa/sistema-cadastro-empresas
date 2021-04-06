@@ -15,7 +15,7 @@ import br.com.gerenciador.modelo.Empresa;
 
 public class EditaEmpresa {
 	
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		String idEmpresaString = request.getParameter("id");
 		int idEmpresa = 0; 
@@ -44,7 +44,7 @@ public class EditaEmpresa {
 		empresa.setNome(nomeEmpresa);
 		empresa.setDataAbertura(dataAberturaEmpresa);
 		
-		response.sendRedirect("entrada?acao=ListarEmpresas");
+		return "redirect:entrada?acao=ListarEmpresas";
 		
 	}
 

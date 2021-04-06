@@ -15,7 +15,7 @@ import br.com.gerenciador.modelo.Empresa;
 
 public class CadastraEmpresa {
 
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("Cadastrando nova empresa!");
 		
@@ -43,7 +43,7 @@ public class CadastraEmpresa {
 		
 		request.setAttribute("empresa", empresa.getNome());
 		
-		response.sendRedirect("entrada?acao=ListarEmpresas");
+		return "redirect:entrada?acao=ListarEmpresas";
 			
 	}
 	
