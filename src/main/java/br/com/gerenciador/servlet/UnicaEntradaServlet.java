@@ -9,12 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.gerenciador.acao.CadastraEmpresa;
-import br.com.gerenciador.acao.CadastraEmpresaForm;
-import br.com.gerenciador.acao.EditaEmpresa;
-import br.com.gerenciador.acao.ListaEmpresas;
-import br.com.gerenciador.acao.MostraEmpresa;
-import br.com.gerenciador.acao.RemoveEmpresa;
+import br.com.gerenciador.acao.Acao;
 
 /**
  * Servlet implementation class UnicaEntradaServlet
@@ -27,38 +22,17 @@ public class UnicaEntradaServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String paramAcao = request.getParameter("acao");
+		String caminhoClasseRequisitada = "br.com.gerenciador.acao." + paramAcao;
 		String arquivoJsp = null;
 		
-		if(paramAcao.equals("ListarEmpresas")) {
-			
-			ListaEmpresas acao = new ListaEmpresas();
+		try {
+			Class<?> classe = Class.forName(caminhoClasseRequisitada);
+			Acao acao = (Acao) classe.getConstructor().newInstance();
 			arquivoJsp = acao.executa(request, response);
-			
-		} else if (paramAcao.equals("MostrarEmpresa")) {
-			
-			MostraEmpresa acao = new MostraEmpresa();
-			arquivoJsp = acao.executa(request, response);
-			
-		} else if (paramAcao.equals("CadastrarEmpresa")) {
-		
-			CadastraEmpresa acao = new CadastraEmpresa();
-			arquivoJsp = acao.executa(request, response);
-			
-		}  else if (paramAcao.equals("CadastrarEmpresaForm")) {
-		
-			CadastraEmpresaForm acao = new CadastraEmpresaForm();
-			arquivoJsp = acao.executa(request, response);
-			
-		} else if (paramAcao.equals("EditarEmpresa")) {
-			
-			EditaEmpresa acao = new EditaEmpresa();
-			arquivoJsp = acao.executa(request, response);
-			
-		} else if (paramAcao.equals("RemoverEmpresa")) {
-		
-			RemoveEmpresa acao = new RemoveEmpresa();
-			arquivoJsp = acao.executa(request, response);
-			
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+			throw new ServletException(e);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		String[] tipoEEndereco = arquivoJsp.split(":");

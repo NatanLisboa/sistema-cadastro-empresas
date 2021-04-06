@@ -6,11 +6,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class CadastraEmpresaForm {
+public class CadastraEmpresaForm implements Acao {
 
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
-		return "forward:formNovaEmpresa.jsp";
+		return "forward:formCadastraEmpresa.jsp";
 			
 	}
 	

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.gerenciador.modelo.Banco;
 import br.com.gerenciador.modelo.Empresa;
 
-public class EditaEmpresa {
+public class EditaEmpresa implements Acao {
 	
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
@@ -44,7 +44,7 @@ public class EditaEmpresa {
 		empresa.setNome(nomeEmpresa);
 		empresa.setDataAbertura(dataAberturaEmpresa);
 		
-		return "redirect:entrada?acao=ListarEmpresas";
+		return "redirect:entrada?acao=ListaEmpresas";
 		
 	}
 

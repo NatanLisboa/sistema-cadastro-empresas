@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.gerenciador.modelo.Banco;
 
-public class RemoveEmpresa {
+public class RemoveEmpresa implements Acao {
 	
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
@@ -19,7 +19,7 @@ public class RemoveEmpresa {
 		Banco banco = new Banco();
 		banco.removerEmpresa(id);
 		
-		return "redirect:entrada?acao=ListarEmpresas";
+		return "redirect:entrada?acao=ListaEmpresas";
 		
 	}
 }
